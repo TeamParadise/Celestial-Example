@@ -6,6 +6,7 @@ package frc.robot;
 
 import frc.robot.commands.IntakeNote;
 import frc.robot.commands.ShootNote;
+import frc.robot.commands.auto.TimedTwoNote;
 import frc.robot.commands.drive.ArcadeDrive;
 import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
@@ -66,7 +67,7 @@ public class RobotContainer {
    * @return the command to run in autonomous
    */
   public Command getAutonomousCommand() {
-    // An example command will be run in autonomous
-    return null;
+    // Return our timed two note command to run during autonomous. When autonomus runs, all it actually does is run a command!
+    return new TimedTwoNote(drive, intake, shooter);
   }
 }
