@@ -56,7 +56,7 @@ public class DriveSubsystem extends SubsystemBase {
     rightFollower.burnFlash();
 
     // Now that our motors are configured, we can initialize our DifferentialDrive object
-    drivetrain = new DifferentialDrive(leftLeader, leftFollower);
+    drivetrain = new DifferentialDrive(leftLeader, rightLeader);
   }
 
   /** Runs the drivetrain in tank drive mode (controlling the left speed and the right speed). */

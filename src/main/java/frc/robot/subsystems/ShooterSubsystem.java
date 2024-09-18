@@ -25,6 +25,10 @@ public class ShooterSubsystem extends SubsystemBase {
     bottomFlywheel.setSmartCurrentLimit(60);
     topFlywheel.setSmartCurrentLimit(60);
 
+    // Invert the flywheels
+    bottomFlywheel.setInverted(true);
+    topFlywheel.setInverted(true);
+
     // Set idle mode to coast (things that interact with game pieces normally use coast mode to prevent damage to the game pieces)
     bottomFlywheel.setIdleMode(IdleMode.kCoast);
     topFlywheel.setIdleMode(IdleMode.kBrake);

@@ -20,12 +20,12 @@ public class ShootNote extends SequentialCommandGroup {
     addCommands(
       // The first command that runs is our RunIntake command, running the intake backwards at 10% speed.
       // We do this to ensure that the game piece is not touching the shooter when it starts speeding up.
-      new RunIntake(intake, -0.10).withTimeout(0.5), // This "withTimeout()" means that the after 0.5 seconds, this command WILL end, and the command group will move onto the next command.
+      new RunIntake(intake, -0.20).withTimeout(0.25), // This "withTimeout()" means that the after 0.5 seconds, this command WILL end, and the command group will move onto the next command.
 
       // The second command that runs is our RunShooter command, which will run the shooter at 80% speed.
       // This command only runs after the RunIntake commmand ends (which in this case, is after 0.25 seconds).
       // This command will also end after running for 2.5 seconds, shown by the "withTimeout()" method.
-      new RunShooter(shooter, 0.80).alongWith( // This "alongWith()" method creates a ParallelCommandGroup! You can have command groups inside of command groups.
+      new RunShooter(shooter, 0.70).alongWith( // This "alongWith()" method creates a ParallelCommandGroup! You can have command groups inside of command groups.
         // Everything inside of this "alongWith()" method will run AT THE SAME TIME as the RunShooter command.
         // The first commmand we run in this group is a WaitCommand, which just does nothing for 1.5 seconds, it does nothing else.
         // After the WaitCommand is done (andThen, not alongWith), we use our RunIntake command to intake the note at 20% speed and push it into the flywheels. 

@@ -24,14 +24,14 @@ public class TimedTwoNote extends SequentialCommandGroup {
 
       // The second command that runs is a ParallelCommandGroup that drives backwards at 20% speed as we intake.
       // This ENTIRE COMMAND GROUP has a timeout of a 4 seconds.
-      new ArcadeDrive(drive, () -> -0.20, () -> 0.0).alongWith(new IntakeNote(intake, shooter)).withTimeout(4.0),
+      new ArcadeDrive(drive, () -> -0.50, () -> 0.0).alongWith(new IntakeNote(intake, shooter)).withTimeout(2.0),
       // Notice how the "withTimeout()" is at the end of the command group? This means the entire CommandGroup (so ArcadeDrive and IntakeNote) will end after 4 seconds.
       // Writing it like this does NOT result in the same thing: "new ArcadeDrive(drive, () -> 0.20, () -> 0.20).WITHTIMEOUT(4.0).alongWith(new IntakeNote(intake, shooter))"
       // Writing it like that means the ArcadeDrive command ends after 4 seconds, but the IntakeNote command continues on forever!
       // This means our auto will never continue on!
 
       // The third command that runs is just a ArcadeDrive command to drive forwards at 20% speed, back to the speaker.
-      new ArcadeDrive(drive, () -> 0.20, () -> 0.0).withTimeout(4.0), // Timeout of 4 seconds, just like the previous command group.
+      new ArcadeDrive(drive, () -> 0.50, () -> 0.0).withTimeout(2.0), // Timeout of 2 seconds, just like the previous command group.
 
       // The third command that runs is another ShootNote command to (hopefully) shoot the note that we (hopefully) picked up. 
       new ShootNote(intake, shooter) // This command ends by itself, so there is no timeout needed.
